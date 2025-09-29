@@ -1,0 +1,41 @@
+TITLE WHILE
+.MODEL SMALL
+.STACK 100H
+.DATA
+ MSG1 DB "Digite um caractere: $"
+
+.CODE
+ MAIN PROC
+    MOV AX, @data ; INICIALIZA DADOS
+    MOV DS,AX
+
+    MOV AH, 09H
+    MOV DX, offset MSG1 ;IMPRIME MENSAGEM 1
+    INT 21H
+    
+    MOV CX,0
+
+LEITURA:
+    MOV AH,01H
+    INT 21H             ; LE O CARACTERE
+    CMP AL, 0DH         ; CMP SE É ENTER
+    JE IMPRIME          ; PULA PARA IMPRIME CASO SEJA ENTER 
+    INC CX              ; INCREMENTE CX
+    JMP LEITURA         ; VOLTA PRA LEITURA
+
+IMPRIME:
+    CMP CX,0            ; ANALISA SE CX É 0 CASO SEJA PULO PRA FIM DIRETO
+    JE FIM          
+
+PRINT_LOOP:
+    MOV DL,'*'
+    MOV AH,02               ;LOOP Q PRINTA *
+    INT 21H
+    LOOP PRINT_LOOP
+
+FIM:
+    MOV AH,4CH          ;FIM
+    INT 21H
+
+MAIN ENDP
+END MAIN
