@@ -1,0 +1,300 @@
+/* 6. Boas práticas: tokens de cor e reset básico */
+:root {
+    --cor-primaria: #4A90E2;
+    --cor-secundaria: #F5A623;
+    --cor-fundo: #F4F4F9;
+    --cor-texto: #333;
+    --cor-branco: #FFFFFF;
+    --sombra-card: 0 4px 8px rgba(0,0,0,0.1);
+    --container: 1200px;
+    --header-h: 64px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+/* Imagens fluidas */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Foco visível para acessibilidade */
+a:focus, button:focus {
+    outline: 2px solid var(--cor-primaria);
+    outline-offset: 2px;
+}
+
+/* 1. Navbar (Flexbox) - Mobile */
+.navbar {
+    display: flex;
+    flex-direction: column; /* Empilhado no mobile */
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--cor-branco);
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar .menu ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* 1. Navbar (Flexbox) - REVISADO E CORRIGIDO */
+
+
+/* Estilos Base (Mobile) */
+.navbar {
+    display: flex;
+    flex-direction: column; /* Empilha o logo e o menu */
+    align-items: center;   /* Centraliza tudo no mobile */
+    gap: 1rem;             /* Espaço entre o logo e o menu */
+    padding: 1rem;
+    background-color: var(--cor-branco);
+    border-bottom: 1px solid #ddd;
+}
+
+/* IMPORTANTE: Controla o tamanho do logo */
+.navbar .logo img {
+    max-height: 56px; /* Logo maior no mobile */
+    width: auto;      /* Garante que a proporção da imagem seja mantida */
+}
+
+.navbar .menu ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem; /* Aumentei um pouco o espaço entre os itens do menu */
+}
+
+.navbar .menu a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-weight: 500;
+    padding: 0.5rem;
+}
+
+/* 2. Dashboard (Grid) - Mobile First */
+.dashboard-grid {
+    display: grid;
+    grid-template-areas:
+        "sidebar"
+        "content"
+        "footer";
+    gap: 1.25rem;
+    padding: 1rem;
+    max-width: var(--container);
+    margin: 0 auto;
+}
+
+.sidebar { grid-area: sidebar; }
+.main-content { grid-area: content; display: grid; gap: 1.5rem; }
+.footer { grid-area: footer; text-align: center; color: #666; }
+
+/* Sidebar visual */
+.sidebar {
+    background: var(--cor-branco);
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: var(--sombra-card);
+}
+
+.sidebar ul {
+    list-style: none;
+    display: grid;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+}
+
+.sidebar a:hover, .sidebar a:focus {
+    background: #f2f6ff;
+}
+
+/* 5. Responsividade: Breakpoint para Desktop (CORRIGIDO) */
+
+@media (min-width: 960px) {
+    
+    /* Navbar (Flexbox) - Desktop */
+    .navbar {
+        flex-direction: row;          /* Coloca os itens lado a lado */
+        justify-content: space-between; /* Empurra o logo para um lado e o menu para o outro */
+        align-items: center;          /* Alinha verticalmente ao centro */
+        padding: 0.5rem 2rem;         /* Ajusta o espaçamento para a versão desktop */
+    }
+
+    /* ... o resto do seu código de media query continua aqui ... */
+    
+    /* 2. Dashboard (Grid) - Desktop */
+    .dashboard-grid {
+        grid-template-columns: 240px 1fr;
+        grid-template-areas:
+            "sidebar content"
+            "sidebar footer";
+        padding: 2rem;
+        gap: 2rem;
+    }
+    .sidebar { position: sticky; top: 1.5rem; height: fit-content; }
+    /* etc... */
+}
+
+/* 3. Cards (Grid) - Mobile */
+.cards-container {
+    display: grid;
+    /* No mobile, uma coluna já é o padrão, mas o gap é útil */
+    gap: 1.25rem;
+}
+
+.card {
+    background-color: var(--cor-branco);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--sombra-card);
+}
+
+.card h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
+.card .meta { color: #777; font-size: 0.85rem; margin-bottom: 0.5rem; }
+.card .value { font-size: 1.4rem; color: var(--cor-primaria); display: block; margin: 0.25rem 0 0.5rem; }
+.card .delta { font-size: 0.9rem; margin-bottom: 0.75rem; }
+.delta.positivo { color: #1f8f4e; }
+.delta.negativo { color: #c0392b; }
+.delta.neutro { color: #6b7280; }
+
+.card .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.25rem 0 0.75rem; }
+.badge { background: #eef2ff; color: #3730a3; padding: 0.25rem 0.5rem; border-radius: 999px; font-size: 0.75rem; }
+
+.status { display: flex; gap: 0.5rem; margin: 0.25rem 0 0.75rem; }
+.pill { padding: 0.25rem 0.5rem; border-radius: 999px; font-size: 0.75rem; background: #f3f4f6; color: #374151; }
+.pill.ok { background: #ecfdf5; color: #065f46; }
+.pill.warn { background: #fff7ed; color: #9a3412; }
+
+.card-actions { margin-top: auto; }
+.btn-link { color: var(--cor-primaria); text-decoration: none; font-weight: 600; }
+.btn-link:hover, .btn-link:focus { text-decoration: underline; }
+
+/* 4. Tabela Rolável - Mobile */
+.tabela-wrap {
+    overflow-x: auto; /* A mágica acontece aqui! */
+    background-color: var(--cor-branco);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: var(--sombra-card);
+    -webkit-overflow-scrolling: touch; /* Suaviza no iOS */
+    max-width: 100%;
+}
+
+/* Indicação para o usuário rolar */
+.tabela-wrap::after {
+    content: '◄ Arraste para ver mais ►';
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 0.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px; /* Garante necessidade de rolagem em telas pequenas */
+}
+
+th, td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap; /* Evita quebra e promove rolagem horizontal */
+}
+
+thead {
+    background-color: var(--cor-fundo);
+}
+
+/* KPIs - Mobile First */
+.kpis {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.kpi {
+    background: var(--cor-branco);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: var(--sombra-card);
+    display: grid;
+    gap: 0.25rem;
+}
+
+.kpi-label { color: #666; font-size: 0.9rem; }
+.kpi-value { font-size: 1.25rem; }
+
+/* 5. Responsividade: Breakpoint para Desktop */
+@media (min-width: 960px) {
+    
+    /* 1. Navbar (Flexbox) - Desktop */
+    .navbar {
+        flex-direction: row; /* Lado a lado no desktop */
+        justify-content: space-between;
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: var(--header-h);
+        width: 100%;
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .navbar .menu ul {
+        margin-top: 0;
+    }
+
+    /* 2. Dashboard (Grid) - Desktop */
+    .dashboard-grid {
+        grid-template-columns: 240px 1fr; /* Coluna fixa para sidebar, o resto flexível */
+        grid-template-areas:
+            "sidebar content"
+            "sidebar footer";
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    /* 3. Cards Fluidos (Grid) - Desktop */
+    .cards-container {
+        /* A segunda mágica está aqui! */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    /* KPIs - 3 colunas no desktop */
+    .kpis {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+
+    /* 4. Tabela - Desktop */
+    .tabela-wrap::after {
+        display: none; /* Esconde a mensagem de "arraste" no desktop */
+    }
+}

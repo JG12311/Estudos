@@ -1,0 +1,15 @@
+h1{
+    color: blue;
+    text-align: center;
+}
+
+div{
+    background-color: aquamarine;
+    width: 100px;
+    height: 400px;
+    padding: 20px;
+    vertical-align: auto;
+    font-family: Arial, sans-sheriff;
+    font-weight: bold;
+    border: 4px solid black
+}

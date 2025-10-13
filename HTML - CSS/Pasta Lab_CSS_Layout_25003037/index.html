@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Responsivo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar" role="banner">
+        <div class="logo">
+            <img src="./images/logo.png" alt="Logo da Empresa">
+        </div>
+        <nav class="menu" aria-label="Menu principal">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#relatorios">Relatórios</a></li>
+                <li><a href="#configuracoes">Configurações</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dashboard-grid" id="home">
+        <aside class="sidebar" aria-label="Navegação secundária">
+            <h3>Navegação</h3>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#kpis">KPIs</a></li>
+                <li><a href="#cards">Cards</a></li>
+                <li><a href="#relatorios">Relatórios</a></li>
+            </ul>
+        </aside>
+
+        <section class="main-content" id="conteudo" aria-labelledby="titulo-dashboard">
+            <h1 id="titulo-dashboard">Dashboard Principal</h1>
+            
+            <div class="kpis" id="kpis">
+                <div class="kpi">
+                    <span class="kpi-label">Receita</span>
+                    <strong class="kpi-value">R$ 125K</strong>
+                </div>
+                <div class="kpi">
+                    <span class="kpi-label">Clientes</span>
+                    <strong class="kpi-value">3.245</strong>
+                </div>
+                <div class="kpi">
+                    <span class="kpi-label">Conversão</span>
+                    <strong class="kpi-value">4,7%</strong>
+                </div>
+            </div>
+
+            <div class="cards-container" id="cards" aria-live="polite">
+                <div class="card">
+                    <h3>Desempenho de Vendas</h3>
+                    <p class="meta">Atualizado há 5 min</p>
+                    <p>Vendas no mês</p>
+                    <strong class="value">R$ 125.430</strong>
+                    <p class="delta positivo">+12,3% vs mês anterior</p>
+                    <div class="card-actions">
+                        <a href="#relatorios" class="btn-link">Ver relatório</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Taxa de Conversão</h3>
+                    <p class="meta">Últimas 24h</p>
+                    <p>Conversão total</p>
+                    <strong class="value">4,7%</strong>
+                    <p class="delta neutro">= estável</p>
+                    <div class="card-actions">
+                        <a href="#relatorios" class="btn-link">Detalhar funil</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Usuários Ativos</h3>
+                    <p class="meta">Tempo real</p>
+                    <p>Online agora</p>
+                    <strong class="value">312</strong>
+                    <p class="delta positivo">+8,1% hoje</p>
+                    <div class="card-actions">
+                        <a href="#relatorios" class="btn-link">Ver comportamento</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Tickets de Suporte</h3>
+                    <p class="meta">SLA médio: 2h 15m</p>
+                    <p>Abertos</p>
+                    <strong class="value">27</strong>
+                    <p class="delta negativo">- encerrados: 14 hoje</p>
+                    <div class="card-actions">
+                        <a href="#relatorios" class="btn-link">Fila de tickets</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Receita por Região</h3>
+                    <p class="meta">Top 1: Sudeste</p>
+                    <div class="tags">
+                        <span class="badge">SE</span>
+                        <span class="badge">SUL</span>
+                        <span class="badge">NE</span>
+                        <span class="badge">CO</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#relatorios" class="btn-link">Mapa detalhado</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Status do Sistema</h3>
+                    <p class="meta">Última verificação: agora</p>
+                    <p>Serviços</p>
+                    <div class="status">
+                        <span class="pill ok">API</span>
+                        <span class="pill ok">Banco</span>
+                        <span class="pill warn">Cache</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#relatorios" class="btn-link">Ver monitoramento</a>
+                    </div>
+                </div>
+            </div>
+
+            <h2 id="relatorios">Dados Recentes</h2>
+            <div class="tabela-wrap" role="region" aria-label="Tabela de dados com rolagem horizontal">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Produto</th>
+                            <th scope="col">Região</th>
+                            <th scope="col">Vendas</th>
+                            <th scope="col">Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>Produto A</td>
+                            <td>Sudeste</td>
+                            <td>R$ 1.500,00</td>
+                            <td>28/09/2025</td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Produto B</td>
+                            <td>Sul</td>
+                            <td>R$ 980,00</td>
+                            <td>28/09/2025</td>
+                        </tr>
+                        <tr>
+                            <td>003</td>
+                            <td>Produto C</td>
+                            <td>Nordeste</td>
+                            <td>R$ 2.310,00</td>
+                            <td>27/09/2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="footer" role="contentinfo">
+            <p>&copy; 2025 - Nexus Carrer</p>
+        </footer>
+    </main>
+
+</body>
+</html>

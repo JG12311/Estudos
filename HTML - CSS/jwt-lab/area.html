@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área Restrita - JWT Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__left">
+      <strong>Área Restrita</strong>
+    </div>
+    <div class="topbar__right">
+      <span id="username" class="username">Usuário</span>
+      <button id="logout" class="btn btn--secondary">Logout</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <h2>Token</h2>
+      <p>O token foi carregado do navegador. Você pode copiá-lo e validar no <a id="jwtIoLink" href="https://jwt.io" target="_blank" rel="noopener noreferrer">jwt.io</a>.</p>
+      <textarea id="tokenBox" readonly class="token-box" rows="3" wrap="off" spellcheck="false"></textarea>
+      <div class="actions">
+        <button id="copyToken" class="btn">Copiar token</button>
+        <button id="openJwtIo" class="btn btn--ghost">Abrir jwt.io e instruções</button>
+      </div>
+      <details class="notes">
+        <summary>Instruções de validação manual</summary>
+        <ol>
+          <li>Copie o token acima.</li>
+          <li>Acesse <a href="https://jwt.io" target="_blank" rel="noopener noreferrer">jwt.io</a>.</li>
+          <li>Cole o token no campo <em>Encoded</em> (lado esquerdo).</li>
+          <li>Role até <em>JWT Signature Verification</em> e digite: <code>my-secret-key</code>.</li>
+          <li>Verifique se aparece <strong>Valid JWT</strong> e <strong>Signature Verified</strong>.</li>
+        </ol>
+      </details>
+    </div>
+  </main>
+  <script src="js/area.js"></script>
+</body>
+</html>
+
+
